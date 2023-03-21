@@ -1,12 +1,13 @@
-20230314183102 11000 0 N.CNode()
-20230314183107 11000 0 N.ClearResolver: OK
-20230314183107 11000 0 N.AddResolver: OK, 2001:470:18:90f:151f:3b28:773c:7a50 ysldata.aa4.netvolante.jp  [9993]
-20230314183107 11000 0 N.AddResolver: OK, 2001:470:18:90f:6176:b80f:acc8:a8f3 ysldata.aa4.netvolante.jp  [9995]
-20230314183107 11000 0 N.AddResolver: OK, 2001:470:18:90f::1 ysldata.aa4.netvolante.jp  [35762]
-20230314183107 11000 0 N.AddResolver: OK, 2001:470:18:90f:850c:84c4:c5bd:8d33 ysldata.aa4.netvolante.jp  [9993]
-20230314183107 11000 0 N.AddResolver: OK, 240b:10:8ea0:4400:b891:e340:260:50e0 ycdata2.aa4.netvolante.jp  [61015]
-20230314183107 11000 0 N.AddResolver: OK, 240b:10:8ea0:4400:9e6:5662:7562:22fa ycdata2.aa4.netvolante.jp  [61016]
-20230314183107 11000 0 N.AddResolver: OK, 2001:470:18:90f:3d96:36d:b4e2:3b4b ysldata.aa4.netvolante.jp  [9993]
-20230314183107 11000 0 N.EndRegisterImpl: 2001:470:18:90f:151f:3b28:773c:7a50 9993 DRSGroup OK
-20230314183107 11000 -14 N.EndResolveImpl: 2001:470:18:90f::1 35762 DRSGroup NG
-20230314183107 11000 0 N.DoResolve: BeginResolveFromResolver OK, ysldata.aa4.netvolante.jp[35762]
+20230313100258 25460 0 N.CNode()
+20230313100258 25460 0 N.AddResolver: OK, 2001:470:18:90f:151f:3b28:773c:7a50 ysldata.aa4.netvolante.jp  [9993]
+20230313100258 25460 0 N.AddResolver: OK, 2001:470:18:90f:6176:b80f:acc8:a8f3 ysldata.aa4.netvolante.jp  [9995]
+20230313100258 25460 0 N.AddResolver: OK, 2001:470:18:90f::1 ysldata.aa4.netvolante.jp  [35762]
+20230313100258 25460 0 N.AddResolver: OK, 2001:470:18:90f:850c:84c4:c5bd:8d33 ysldata.aa4.netvolante.jp  [9993]
+20230313100258 25460 0 N.AddResolver: OK, 240b:10:8ea0:4400:b891:e340:260:50e0 ycdata2.aa4.netvolante.jp  [61015]
+20230313100258 25460 0 N.AddResolver: OK, 240b:10:8ea0:4400:9e6:5662:7562:22fa ycdata2.aa4.netvolante.jp  [61016]
+20230313100304 25460 0 N.DoResolve: BeginResolveFromResolver OK, ysldata.aa4.netvolante.jp[9995]
+20230313100304 25460 0 RS.BeginResolve2Impl: SendRequest(ysldata.aa4.netvolante.jp, 9995, DRSGroup, 20) OK
+20230313100306 25460 0 RS.@@@ OnReceiveHttpReplyImpl elapse=4440ms
+20230313100306 25460 0 RS.OnReceiveGetAppResponse: received DRSGroup
+20230313100306 25460 0 RS.$$$ OnReceiveGetAppResponse
+20230313100306 25460 0 RS.@@@ OnReceiveHttpReplyImpl elapse=5015ms

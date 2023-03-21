@@ -5,3 +5,12 @@
 20230313183224 1080 0 N.AddResolver: OK, 240b:10:8ea0:4400:b891:e340:260:50e0 ycdata2.aa4.netvolante.jp  [61015]
 20230313183224 1080 0 N.AddResolver: OK, 240b:10:8ea0:4400:9e6:5662:7562:22fa ycdata2.aa4.netvolante.jp  [61016]
 20230313183226 1080 0 N.DoResolve: BeginResolveFromResolver OK, 240b:10:8ea0:4400:b891:e340:260:50e0[61015]
+20230313183226 1080 0 RS.BeginResolve2Impl: SendRequest(240b:10:8ea0:4400:b891:e340:260:50e0, 61015, DRSGroup, 20) OK
+20230313183226 1080 0 RS.@@@ OnReceiveHttpReplyImpl elapse=32ms
+20230313183226 1080 0 RS.OnReceiveResolveResponse: received 240b:10:8ea0:4400:b891:e340:260:50e0 61015 RESOLVE
+20230313183226 1080 0 RS.$$$ OnReceiveResolveResponse
+20230313183228 1080 0 RS.DoCombinedRequestImpl: SendRequest(2001:470:18:90f:6176:b80f:acc8:a8f3, 9995, ct=4) OK
+20230313183229 1080 0 RS.BeginGetAppImpl: SendRequest(2001:470:18:90f:850c:84c4:c5bd:8d33, 9993, DRSGroup, 20230313083223, 300) OK
+20230313183229 1080 0 RS.@@@ OnReceiveHttpReplyImpl elapse=688ms
+20230313183229 1080 0 RS.OnReceiveCombinedResponse: received 2001:470:18:90f:6176:b80f:acc8:a8f3 9995
+20230313183229 1080 0 RS.$$$ OnReceiveCombinedResponse

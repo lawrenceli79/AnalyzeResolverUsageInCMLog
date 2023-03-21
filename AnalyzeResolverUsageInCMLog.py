@@ -32,20 +32,16 @@ def FindResolverByDns(resolvers:[Resolver], domain:str, port:int) -> int:
             break
     return ipick
 
-if (len(sys.argv)<=1):
-    print ("Usage: py {} <Folder> ".format(__file__))
-    sys.exit()
-
-strInFolder = sys.argv[1]
 
 # Output resolver usage in a single row
-def Output(dirpath:str, fname:str, timestr:str, resolvers:[Resolver], i:int, bIsIpv6:bool) -> None:
+def Output(dirpath:str, fname:str, timestr:str, req:str, resolvers:[Resolver], i:int, bIsIpv6:bool) -> None:
     if(len(resolvers)==0):
         return
     strOut = ""
     strOut += dirpath + ","
     strOut += fname + ","
     strOut += timestr + ","
+    strOut += req + ","
     if(i>-1):
         addr = resolvers[i].ipv6 if bIsIpv6 else resolvers[i].domain
         ipv = "ipv6" if bIsIpv6 else "ipv4"
@@ -70,23 +66,33 @@ def AnalyzeFile(dirpath:str, fname:str):
                 port = (int)(mo.group(4))
                 r = Resolver(ipv6, domain, port)
                 resolvers.append(r)
-            elif(mo := re.search("N\.DoResolve: BeginResolveFromResolver OK, ([0-9a-f:]+)\[(\d+)\]", line)):
-                ip = mo.group(1)
-                port = (int)(mo.group(2))
-                iResolver = FindResolverByIp(resolvers, ip, port)
-                Output(dirpath, fname, timestr, resolvers, iResolver, True)
-            elif(mo := re.search("N\.DoResolve: BeginResolveFromResolver OK, ([\w.]+)\[(\d+)\]", line)):
-                name = mo.group(1)
-                port = (int)(mo.group(2))
-                iResolver = FindResolverByDns(resolvers, name, port)
-                Output(dirpath, fname, timestr, resolvers, iResolver, False)
+            #elif(mo := re.search("N\.DoResolve: BeginResolveFromResolver OK, ([0-9a-f:]+)\[(\d+)\]", line)):
+            elif(mo := re.search("RS\.(\w+): SendRequest\(([0-9a-f:]+), (\d+),", line)):
+                req = mo.group(1) 
+                addr = mo.group(2)
+                port = (int)(mo.group(3))
+                iResolver = FindResolverByIp(resolvers, addr, port)
+                Output(dirpath, fname, timestr, req, resolvers, iResolver, True)
+            #elif(mo := re.search("N\.DoResolve: BeginResolveFromResolver OK, ([\w.]+)\[(\d+)\]", line)):
+            elif(mo := re.search("RS\.(\w+): SendRequest\(([\w.]+), (\d+),", line)):
+                req = mo.group(1) 
+                addr = mo.group(2)
+                port = (int)(mo.group(3))
+                iResolver = FindResolverByDns(resolvers, addr, port)
+                Output(dirpath, fname, timestr, req, resolvers, iResolver, False)
             elif(re.search("N\.ClearResolver: OK", line)):
                 resolvers.clear()
             elif(re.search("N\.CNode\(\)", line)):
                 resolvers.clear()
 
 
-strHeader = "Folder,File,Time,iRPck,RPck,ipv4/6"
+
+if (len(sys.argv)<=1):
+    print ("Usage: py {} <Folder> ".format(__file__))
+    sys.exit()
+strInFolder = sys.argv[1]
+
+strHeader = "Folder,File,Time,Request,iRPck,RPck,ipv4/6"
 for i in range(0, 7):
     strHeader += ",Resolver{}".format(i)
 print(strHeader)
